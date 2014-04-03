@@ -1,0 +1,71 @@
+/*字体的设置*/
+.header h1, .header h2, .header h3, .header h4, .header h5, .header h6, .header a, .header button, .header {
+	color: #000000;
+	font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
+}
+.header h2{
+	font-size: 2.5rem;
+	font-weight: 300;
+	letter-spacing: 0.01em;
+	line-height: 2.5rem;
+}
+.header .header-2 li a{
+	color: inherit;
+	display: inline-block;
+	font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
+	font-size: 2.2rem;
+	font-weight: 300;
+	letter-spacing: 0.01em;
+	line-height: 2.2rem;
+	padding: 15px;
+	text-decoration: none;
+}
+
+/*字体颜色设置*/
+.header .fg-orange, .header a {
+	color: #8B4726 !important;
+}
+.header .fg-cobalt {
+	color: #8B4726 !important;
+}
+html {
+	font-size: 62.5%
+}
+body {
+	font-size: 1.4rem;
+	
+}
+.header {
+   	width: 1040px;
+   	padding: 10px;
+   	margin: 5px;
+}
+.header .header-1 {
+   	margin: 30px;
+}
+.header .form-control {
+   	width: 200px;
+}
+.header .place-left {
+    margin-top: -20px;
+    float: left;
+}
+.header .place-right {
+   	float: right;
+}
+*{
+	border-collapse: collapse;
+}
+.header .header-2 {
+	clear: right;
+}
+.header .header-2 {
+    margin-top: 85px;
+    margin-left: -16px;
+}
+.header-2 ul li {
+   	line-height: 20px;
+    display: inline;
+    list-style-type: none;
+}
+

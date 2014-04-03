@@ -1,0 +1,33 @@
+/*◊÷ÃÂ…Ë÷√*/
+    .charset {
+       /*font: 16px/1.5 Tahoma,Helvetica,Arial,'ÀŒÃÂ',sans-serif;*/
+       font-size: 16px;
+       font-family: Georgia, serif;
+    }
+    .container {
+    	width: 570px;
+        margin-left: 400px;
+        margin-top: 100px;
+        padding: 20px;
+    }
+    .username-left {
+        float: left;
+        padding: 10px;
+    }
+    .form-control {
+        margin: 8px;
+        height: 30px;
+        width: 50%;
+    }
+    .username .passwd .checkCode {
+    	clear: left;
+    }
+    .head-top {
+        margin-left: 135px;
+    }
+    .btn-place {
+        margin-left: 300px;
+    }
+    .checkImg {
+    	margin-left: 135px;
+    }

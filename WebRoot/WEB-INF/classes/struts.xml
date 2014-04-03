@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	<!-- 开启开发模式，详细错误提示  -->
+	<constant name="struts.devMode" value="false"></constant>
+	
+	<!-- 1  以下对action进行分类  ajax传输的aciton，普通的action，后台的action-->
+    <package name="postAjax" extends="json-default" namespace="/postAjax">
+		<action name="postAjaxAction" class="com.designofgradual.action.PostAjaxAction">
+			<result name="success" type="json">
+    			<param name="root">result</param>
+    		</result>	
+		</action>
+    </package>
+	<!-- 信息检查 -->
+    <package name="valAjax" extends="json-default">
+		<action name="validate" class="com.designofgradual.action.ValidateAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>    
+   <!-- 普通Action -->
+	<package name="test" extends="struts-default">
+		<action name="rand" class="com.designofgradual.action.RandomAction">        
+	          <result type="stream">        
+	            <param name="contentType">image/jpeg</param>        
+	            <param name="inputName">inputStream</param>        
+	          </result>   
+	        </action>
+			<!-- 用户登录 -->
+			<action name="loginAction" class="com.designofgradual.action.LoginAction">
+				<result name="backindex">/sysBackstage/backindex.jsp</result>
+	    		<result name="login_index">/index.jsp</result>
+				<result name="user_info">/user/userindex.jsp</result>
+	    		<result name="error">/login.jsp</result>
+				<result name="exception">/loginexc.jsp</result>
+	    	</action>
+			<!-- 用户注册 -->
+			<action name="userAction" class="com.designofgradual.action.UserAction">
+				<result name="user_info">/user/userindex.jsp</result>
+				<result name="register_index">/index.jsp</result>
+			</action>
+			<!-- 用户发帖 -->
+			<action name="postAction" class="com.designofgradual.action.PostAction">
+				<result name="post_suc">/post/post_view.jsp</result>
+				
+				<result name="retrieve_postByReply">/index.jsp</result>
+			</action>
+		</package>
+		
+		
+</struts>
+
