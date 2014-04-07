@@ -36,6 +36,7 @@ public class ValidateAction extends BaseAction{
 	@SuppressWarnings("unused")
 	public String execute() throws Exception{
 		try {
+			System.out.println("userName = " + userName);
 			if (userDao.validateName(userName)) {
 				setTip("用户名："+ userName +"不可用");
 			} else {
@@ -83,8 +84,6 @@ public class ValidateAction extends BaseAction{
 	 */
 	public String validateCode() throws Exception{
 		String sessionCode = (String) ActionContext.getContext().getSession().get("sessionCode");
-		System.out.println("sessionCode = " + sessionCode);
-		System.out.println("code = " + getCode());
 		if(sessionCode.equals(this.getCode())){
 			this.setTip("验证码正确");
 		}else {
@@ -111,6 +110,8 @@ public class ValidateAction extends BaseAction{
 			throw new RuntimeException(e);
 		}
 	}
+	
+//  getter and setter method
 	public String getMail() {
 		return mail;
 	}

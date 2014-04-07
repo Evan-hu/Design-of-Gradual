@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -11,6 +12,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    	function click(){
+    		$(".header .login-form").show();
+    	}
+    </script>
   </head>
   <body>
   	<div class="container">
@@ -52,6 +60,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				</ul>	
   			</div>
   		</div>
+  		<!--   登陆的div默认为display：none   -->
+  		<div class="login-form" style="display: none">
+  			<form id="login-form" action="loginAction" method="post">
+  				<div class="form-group">
+    		<div class="email place-left">
+    		<label for="exampleInputEmail1" >用户名 :</label>
+    		</div>
+    		<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  		</div>
+  		<div class="form-group">
+  			<div class="passwd">
+  				<label for="exampleInputPassword1" class="passwd-left">密 &nbsp&nbsp&nbsp码 :</label>
+  			</div>
+    		<input type="password" class="form-control place-right" id="exampleInputPassword1" placeholder="Password">
+  		</div>
+  		<div class="form-group">
+  			<div class="checkCode">
+            <label class="username-left charset">验证码 : </label>
+            <input type="text" class="form-control" id="code" placeholder="Enter Code" name="checkCode" required autofocus>
+      		<span id="msg-code" style="display: none; color: red">请输入验证码</span>
+      	</div>
+  		</div>
+  			<div>
+  				<img src="rand.action" class="checkImg"  onclick="changeValidateCode(this)" title="点击刷新验证码"/>
+  			</div>
+  		<div class="checkbox">
+    		<label>
+      		<input type="checkbox"> Check me out
+    		</label>
+  		</div>
+  		<button type="submit" class="btn btn-default">登陆</button>
+  			</form>
+  		</div>
   		<div class="main-content">
   		<div>
   			<p>
@@ -62,11 +103,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</div>
   		</div>
   	</div>
-   
-
-    
-    <script src="js/jquery-1.8.3.min.js"></script>
-    
-    <script src="js/bootstrap.js"></script>
   </body>
 </html>

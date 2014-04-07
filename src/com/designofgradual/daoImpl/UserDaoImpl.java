@@ -23,14 +23,12 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 	 */
 	public User queryUser(String username, String userpasswd) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(" Dao fro");
 		String queryString = "from User user where user.username='"+username+ "'" + " and user.userpasswd='"+userpasswd+"'"; 
 		try {
 			User user = (User)getHibernateTemplate().find(queryString).get(0);
 			this.getHibernateTemplate().saveOrUpdate(user);
 			return (User)getHibernateTemplate().find(queryString).get(0);
 		} catch (Exception e) {
-		//	System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 		return null;
@@ -95,6 +93,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 		try {
 			String queryString = "from User where useremail = '"+mail+"'";
 			User user = (User)getHibernateTemplate().find(queryString).get(0);
+			System.out.println("----------"+user.getUseremail()+"----------");
 			if(!(user.getUseremail()).equals(null)){
 				return true;
 			}

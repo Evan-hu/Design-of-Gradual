@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/registe.css" rel="stylesheet">
 	<script src="js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="js/valdata.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/valdata.js"></script>
     <style type="text/css" media="screen">
     </style>
   </head>
@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
       <div class="mail">
           <label class="username-left charset">邮 &nbsp&nbsp&nbsp箱 : </label>
-          <input class="form-control" placeholder="Enter email" type="text" id="checkmail">
+          <input class="form-control" placeholder="Enter email" name="email" type="text" id="checkmail">
       	  <span id="msg-mail" style="color: red"></span>
       </div>
       <div class="username">

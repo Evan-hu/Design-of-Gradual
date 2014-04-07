@@ -14,9 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-@SuppressWarnings("serial")
 @Entity
-@Table(name = "user", catalog = "dofg")
+@Table(name = "user", catalog = "dofg_1")
 public class User implements java.io.Serializable {
 
 	// Fields
@@ -25,8 +24,16 @@ public class User implements java.io.Serializable {
 	private String username;
 	private String userpasswd;
 	private String useremail;
-	private Set<Reply> replies = new HashSet<Reply>(0);
+	private String userright;
+	private String sysmesg;
+	private String name;
+	private String sex;
+	private String brithday;
+	private String tel;
+	private String img;
+	private String address;
 	private Set<Post> posts = new HashSet<Post>(0);
+	private Set<Replay> replaies = new HashSet<Replay>(0);
 
 	// Constructors
 
@@ -35,25 +42,36 @@ public class User implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public User(String username, String userpasswd) {
+	public User(String username, String userpasswd, String useremail) {
 		this.username = username;
 		this.userpasswd = userpasswd;
+		this.useremail = useremail;
 	}
 
 	/** full constructor */
 	public User(String username, String userpasswd, String useremail,
-			Set<Reply> replies, Set<Post> posts) {
+			String userright, String sysmesg, String name, String sex,
+			String brithday, String tel, String img, String address,
+			Set<Post> posts, Set<Replay> replaies) {
 		this.username = username;
 		this.userpasswd = userpasswd;
 		this.useremail = useremail;
-		this.replies = replies;
+		this.userright = userright;
+		this.sysmesg = sysmesg;
+		this.name = name;
+		this.sex = sex;
+		this.brithday = brithday;
+		this.tel = tel;
+		this.img = img;
+		this.address = address;
 		this.posts = posts;
+		this.replaies = replaies;
 	}
 
 	// Property accessors
 	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
-	@GeneratedValue(generator = "generator")
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "userid", unique = true, nullable = false)
 	public Integer getUserid() {
 		return this.userid;
@@ -81,7 +99,7 @@ public class User implements java.io.Serializable {
 		this.userpasswd = userpasswd;
 	}
 
-	@Column(name = "useremail")
+	@Column(name = "useremail", nullable = false)
 	public String getUseremail() {
 		return this.useremail;
 	}
@@ -90,13 +108,76 @@ public class User implements java.io.Serializable {
 		this.useremail = useremail;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-	public Set<Reply> getReplies() {
-		return this.replies;
+	@Column(name = "userright", length = 8)
+	public String getUserright() {
+		return this.userright;
 	}
 
-	public void setReplies(Set<Reply> replies) {
-		this.replies = replies;
+	public void setUserright(String userright) {
+		this.userright = userright;
+	}
+
+	@Column(name = "sysmesg", length = 65535)
+	public String getSysmesg() {
+		return this.sysmesg;
+	}
+
+	public void setSysmesg(String sysmesg) {
+		this.sysmesg = sysmesg;
+	}
+
+	@Column(name = "name", length = 31)
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Column(name = "sex", length = 5)
+	public String getSex() {
+		return this.sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	@Column(name = "brithday", length = 31)
+	public String getBrithday() {
+		return this.brithday;
+	}
+
+	public void setBrithday(String brithday) {
+		this.brithday = brithday;
+	}
+
+	@Column(name = "tel", length = 15)
+	public String getTel() {
+		return this.tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	@Column(name = "img", length = 31)
+	public String getImg() {
+		return this.img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	@Column(name = "address", length = 31)
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
@@ -106,6 +187,15 @@ public class User implements java.io.Serializable {
 
 	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	public Set<Replay> getReplaies() {
+		return this.replaies;
+	}
+
+	public void setReplaies(Set<Replay> replaies) {
+		this.replaies = replaies;
 	}
 
 }

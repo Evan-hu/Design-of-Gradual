@@ -13,6 +13,15 @@ public class RandomAction extends BaseAction{
 	
 	private ByteArrayInputStream inputStream;      
 	
+	/**
+	 * 
+	 * Todo：验证码
+	 * @author Evan
+	 * Date：2014-4-7
+	 * @return
+	 * @throws Exception
+	 * @see com.opensymphony.xwork2.ActionSupport#execute()
+	 */
 	public String execute() throws Exception{      
 		RandomNum rdnu=RandomNum.Instance();      
 		this.setInputStream(rdnu.getImage());//取得带有随机字符串的图片      

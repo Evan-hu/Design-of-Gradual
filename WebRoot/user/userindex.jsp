@@ -6,7 +6,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
 if(session.getAttribute("cur_user") != null){
-	cur_user = session.getAttribute("cur_user").toString();
+		String cur_user = session.getAttribute("cur_user").toString();
+	}
  %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -30,7 +31,7 @@ if(session.getAttribute("cur_user") != null){
   
   	<div align="center"> 
   		<br>登录成功 
-  	</div>
-    This is my JSP page. <br>
+    This is my JSP page. 欢迎用户：<%out.print(session.getAttribute("cur_user").toString()); %>登陆<br>
+    </div>
   </body>
 </html>

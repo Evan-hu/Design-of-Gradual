@@ -6,14 +6,15 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
-@SuppressWarnings("serial")
 @Entity
-@Table(name = "item", catalog = "dofg")
+@Table(name = "item", catalog = "dofg_1")
 public class Item implements java.io.Serializable {
 
 	// Fields
@@ -21,7 +22,7 @@ public class Item implements java.io.Serializable {
 	private Integer itemid;
 	private String itemname;
 	private String itemchart;
-	private Set<Post> posts = new HashSet<Post>(0);
+	private Set<Replay> replaies = new HashSet<Replay>(0);
 
 	// Constructors
 
@@ -30,22 +31,20 @@ public class Item implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Item(Integer itemid, String itemname) {
-		this.itemid = itemid;
+	public Item(String itemname) {
 		this.itemname = itemname;
 	}
 
 	/** full constructor */
-	public Item(Integer itemid, String itemname, String itemchart,
-			Set<Post> posts) {
-		this.itemid = itemid;
+	public Item(String itemname, String itemchart, Set<Replay> replaies) {
 		this.itemname = itemname;
 		this.itemchart = itemchart;
-		this.posts = posts;
+		this.replaies = replaies;
 	}
 
 	// Property accessors
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "itemid", unique = true, nullable = false)
 	public Integer getItemid() {
 		return this.itemid;
@@ -74,12 +73,12 @@ public class Item implements java.io.Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item")
-	public Set<Post> getPosts() {
-		return this.posts;
+	public Set<Replay> getReplaies() {
+		return this.replaies;
 	}
 
-	public void setPosts(Set<Post> posts) {
-		this.posts = posts;
+	public void setReplaies(Set<Replay> replaies) {
+		this.replaies = replaies;
 	}
 
 }

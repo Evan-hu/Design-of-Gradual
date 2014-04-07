@@ -10,10 +10,20 @@ import com.designofgradual.util.BaseAction;
 public class LoginAction extends BaseAction{
 
 	private User user;
+	private String code;
 	private String username;
 	private String userpasswd;
 	private UserDao userDao;
 
+	/**
+	 * 
+	 * Todo：登陆
+	 * @author Evan
+	 * Date：2014-4-4
+	 * @return
+	 * @throws Exception
+	 * @see com.opensymphony.xwork2.ActionSupport#execute()
+	 */
 	public String execute() throws Exception{
 		//密码加密，调用BaseAction中方法
 		userpasswd = EncoderPwdByMd5(userpasswd);
@@ -23,41 +33,49 @@ public class LoginAction extends BaseAction{
 					this.getRequest().put("userinfo", "false");
 				}
 			}catch (Exception e) {
-				//have false return index.jsp
 				System.out.println(e.getMessage());
 				this.getRequest().put("login_info", "false");
-				return "login_index";
+				return "exception";
 			}
-			this.getSession().put("cur_user",this.user.getUsername());
-			//此处应该加以分级管理
-			/**
-			    System.out.println("user_point = " + user.getPoint()+ "---" + this.getSession().get("user_point"));
-				if(user.getUsertype().equals("管理员")){
-				return "backindex"; 
+			if(user.getUserright().equals("1")) {
+				//系统管理员				
+				this.getSession().put("cur_user", this.user.getUsername());
+				return "backindex";
+			}else if(user.getUserright().equals("2")) {
+				//版主			
+				this.getSession().put("cur_user", this.user.getUsername());
+				return "user_plate";
+			}else if(user.getUserright().equals("3")) {
+				//普通用户	
+				this.getSession().put("cur_user", this.user.getUsername());
+				return "user_info";
+			}else {
+				//有错误时返回
+				return "error";
 			}
-				分为三层：
-						系统管理员，版主，一般用户。
-			*/
-			return "user_info";
 	}
 	
 	
 	
     //getter and stter	
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
 	public String getUserpasswd() {
 		return userpasswd;
 	}
@@ -71,5 +89,4 @@ public class LoginAction extends BaseAction{
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
-	
 }

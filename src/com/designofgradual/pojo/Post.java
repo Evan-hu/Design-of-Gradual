@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,23 +17,23 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@SuppressWarnings("serial")
+
 @Entity
-@Table(name = "post", catalog = "dofg")
+@Table(name = "post", catalog = "dofg_1")
 public class Post implements java.io.Serializable {
 
 	// Fields
 
 	private Integer postid;
 	private User user;
-	private Item item;
-	private Integer replynum;
-	private String headline;
-	private String content;
-	private Date posttime;
-	private Integer clicknum;
-	private String postname;
-	private Set<Reply> replies = new HashSet<Reply>(0);
+	private String pitem;
+	private String ptitle;
+	private String pcontent;
+	private Date ptime;
+	private String pstate;
+	private Integer pclicknum;
+	private Integer preplay;
+	private Set<Replay> replaies = new HashSet<Replay>(0);
 
 	// Constructors
 
@@ -40,34 +42,34 @@ public class Post implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Post(Integer postid, User user, Item item, String headline,
-			String content, Date posttime) {
-		this.postid = postid;
+	public Post(User user, String pitem, String ptitle, String pcontent,
+			Date ptime, String pstate) {
 		this.user = user;
-		this.item = item;
-		this.headline = headline;
-		this.content = content;
-		this.posttime = posttime;
+		this.pitem = pitem;
+		this.ptitle = ptitle;
+		this.pcontent = pcontent;
+		this.ptime = ptime;
+		this.pstate = pstate;
 	}
 
 	/** full constructor */
-	public Post(Integer postid, User user, Item item, Integer replynum,
-			String headline, String content, Date posttime, Integer clicknum,
-			String postname, Set<Reply> replies) {
-		this.postid = postid;
+	public Post(User user, String pitem, String ptitle, String pcontent,
+			Date ptime, String pstate, Integer pclicknum, Integer preplay,
+			Set<Replay> replaies) {
 		this.user = user;
-		this.item = item;
-		this.replynum = replynum;
-		this.headline = headline;
-		this.content = content;
-		this.posttime = posttime;
-		this.clicknum = clicknum;
-		this.postname = postname;
-		this.replies = replies;
+		this.pitem = pitem;
+		this.ptitle = ptitle;
+		this.pcontent = pcontent;
+		this.ptime = ptime;
+		this.pstate = pstate;
+		this.pclicknum = pclicknum;
+		this.preplay = preplay;
+		this.replaies = replaies;
 	}
 
 	// Property accessors
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "postid", unique = true, nullable = false)
 	public Integer getPostid() {
 		return this.postid;
@@ -78,7 +80,7 @@ public class Post implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "writer", nullable = false)
+	@JoinColumn(name = "pwriter", nullable = false)
 	public User getUser() {
 		return this.user;
 	}
@@ -87,78 +89,77 @@ public class Post implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "item", nullable = false)
-	public Item getItem() {
-		return this.item;
+	@Column(name = "pitem", nullable = false, length = 11)
+	public String getPitem() {
+		return this.pitem;
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setPitem(String pitem) {
+		this.pitem = pitem;
 	}
 
-	@Column(name = "replynum")
-	public Integer getReplynum() {
-		return this.replynum;
+	@Column(name = "ptitle", nullable = false)
+	public String getPtitle() {
+		return this.ptitle;
 	}
 
-	public void setReplynum(Integer replynum) {
-		this.replynum = replynum;
+	public void setPtitle(String ptitle) {
+		this.ptitle = ptitle;
 	}
 
-	@Column(name = "headline", nullable = false, length = 60)
-	public String getHeadline() {
-		return this.headline;
+	@Column(name = "pcontent", nullable = false, length = 65535)
+	public String getPcontent() {
+		return this.pcontent;
 	}
 
-	public void setHeadline(String headline) {
-		this.headline = headline;
-	}
-
-	@Column(name = "content", nullable = false, length = 65535)
-	public String getContent() {
-		return this.content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
+	public void setPcontent(String pcontent) {
+		this.pcontent = pcontent;
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "posttime", nullable = false, length = 10)
-	public Date getPosttime() {
-		return this.posttime;
+	@Column(name = "ptime", nullable = false, length = 10)
+	public Date getPtime() {
+		return this.ptime;
 	}
 
-	public void setPosttime(Date posttime) {
-		this.posttime = posttime;
+	public void setPtime(Date ptime) {
+		this.ptime = ptime;
 	}
 
-	@Column(name = "clicknum")
-	public Integer getClicknum() {
-		return this.clicknum;
+	@Column(name = "pstate", nullable = false, length = 8)
+	public String getPstate() {
+		return this.pstate;
 	}
 
-	public void setClicknum(Integer clicknum) {
-		this.clicknum = clicknum;
+	public void setPstate(String pstate) {
+		this.pstate = pstate;
 	}
 
-	@Column(name = "postname", length = 30)
-	public String getPostname() {
-		return this.postname;
+	@Column(name = "pclicknum")
+	public Integer getPclicknum() {
+		return this.pclicknum;
 	}
 
-	public void setPostname(String postname) {
-		this.postname = postname;
+	public void setPclicknum(Integer pclicknum) {
+		this.pclicknum = pclicknum;
+	}
+
+	@Column(name = "preplay")
+	public Integer getPreplay() {
+		return this.preplay;
+	}
+
+	public void setPreplay(Integer preplay) {
+		this.preplay = preplay;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "post")
-	public Set<Reply> getReplies() {
-		return this.replies;
+	public Set<Replay> getReplaies() {
+		return this.replaies;
 	}
 
-	public void setReplies(Set<Reply> replies) {
-		this.replies = replies;
+	public void setReplaies(Set<Replay> replaies) {
+		this.replaies = replaies;
 	}
 
 }

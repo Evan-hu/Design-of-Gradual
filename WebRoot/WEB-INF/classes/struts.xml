@@ -8,13 +8,15 @@
 	<constant name="struts.devMode" value="false"></constant>
 	
 	<!-- 1  以下对action进行分类  ajax传输的aciton，普通的action，后台的action-->
-    <package name="postAjax" extends="json-default" namespace="/postAjax">
-		<action name="postAjaxAction" class="com.designofgradual.action.PostAjaxAction">
+	<!-- 配置ItemAjax -->
+	<package name="itemAjax" extends="json-default">
+		<action name="itemAjaxAction" class="com.designofgradual.action.ItemAjaxAction">
 			<result name="success" type="json">
     			<param name="root">result</param>
     		</result>	
 		</action>
     </package>
+	
 	<!-- 信息检查 -->
     <package name="valAjax" extends="json-default">
 		<action name="validate" class="com.designofgradual.action.ValidateAction">
@@ -33,10 +35,11 @@
 	        </action>
 			<!-- 用户登录 -->
 			<action name="loginAction" class="com.designofgradual.action.LoginAction">
-				<result name="backindex">/sysBackstage/backindex.jsp</result>
+				<result name="backindex">/sysBackstage/bsindex.jsp</result>
 	    		<result name="login_index">/index.jsp</result>
 				<result name="user_info">/user/userindex.jsp</result>
-	    		<result name="error">/login.jsp</result>
+	    		<result name="user_plate">/user-plate/index.jsp</result>
+				<result name="error">/login.jsp</result>
 				<result name="exception">/loginexc.jsp</result>
 	    	</action>
 			<!-- 用户注册 -->

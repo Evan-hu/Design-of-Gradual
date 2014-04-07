@@ -32,12 +32,14 @@ public class UserAction extends BaseAction{
 	 */
 	public String execute() throws Exception
 	{
-		userpasswd = EncoderPwdByMd5(userpasswd);
+		userpasswd = EncoderPwdByMd5(userpasswd);//MD5 加密
 		System.out.println("userpasswd = " + userpasswd);
 		user = new User();
 		user.setUsername(username);
 		user.setUserpasswd(userpasswd);
 		user.setUseremail(email);
+		user.setUserright("3");//默认设置为普通用户
+//		user.setImg("");//默认设置用户头像
 		
 		if(userDao.addUser(user) <= 0){
 			return "register_index";
