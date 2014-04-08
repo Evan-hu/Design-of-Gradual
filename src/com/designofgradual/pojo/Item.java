@@ -9,10 +9,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
+/**
+ * Item entity. @author MyEclipse Persistence Tools
+ */
 @Entity
 @Table(name = "item", catalog = "dofg_1")
 public class Item implements java.io.Serializable {
@@ -20,23 +24,24 @@ public class Item implements java.io.Serializable {
 	// Fields
 
 	private Integer itemid;
+	private User user;
 	private String itemname;
 	private String itemchart;
 	private Set<Replay> replaies = new HashSet<Replay>(0);
 
 	// Constructors
 
-	/** default constructor */
 	public Item() {
 	}
 
-	/** minimal constructor */
-	public Item(String itemname) {
+	public Item(User user, String itemname) {
+		this.user = user;
 		this.itemname = itemname;
 	}
 
-	/** full constructor */
-	public Item(String itemname, String itemchart, Set<Replay> replaies) {
+	public Item(User user, String itemname, String itemchart,
+			Set<Replay> replaies) {
+		this.user = user;
 		this.itemname = itemname;
 		this.itemchart = itemchart;
 		this.replaies = replaies;
@@ -52,6 +57,16 @@ public class Item implements java.io.Serializable {
 
 	public void setItemid(Integer itemid) {
 		this.itemid = itemid;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "itemuser", nullable = false)
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Column(name = "itemname", nullable = false)
