@@ -17,15 +17,15 @@ public class LoginAction extends BaseAction{
 
 	/**
 	 * 
-	 * Todo£ºµÇÂ½
+	 * Todoï¼šç”¨æˆ·ç™»é™†
 	 * @author Evan
-	 * Date£º2014-4-4
+	 * Dateï¼š2014-4-8
 	 * @return
 	 * @throws Exception
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */
 	public String execute() throws Exception{
-		//ÃÜÂë¼ÓÃÜ£¬µ÷ÓÃBaseActionÖĞ·½·¨
+		//MD5 åŠ å¯†éƒ¨åˆ†
 		userpasswd = EncoderPwdByMd5(userpasswd);
 			try{
 				user = this.userDao.queryUser(username, userpasswd);
@@ -38,19 +38,19 @@ public class LoginAction extends BaseAction{
 				return "exception";
 			}
 			if(user.getUserright().equals("1")) {
-				//ÏµÍ³¹ÜÀíÔ±				
-				this.getSession().put("cur_user", this.user.getUsername());
+				//ç³»ç»Ÿç®¡ç†å‘˜	
+				this.getSession().put("user", this.user);
 				return "backindex";
 			}else if(user.getUserright().equals("2")) {
-				//°æÖ÷			
-				this.getSession().put("cur_user", this.user.getUsername());
+				//ç‰ˆä¸»			
+				this.getSession().put("user", this.user);
 				return "user_plate";
 			}else if(user.getUserright().equals("3")) {
-				//ÆÕÍ¨ÓÃ»§	
-				this.getSession().put("cur_user", this.user.getUsername());
+				//æ™®é€šç”¨æˆ·
+				this.getSession().put("user", this.user);
 				return "user_info";
 			}else {
-				//ÓĞ´íÎóÊ±·µ»Ø
+				//å‡ºç°å¼‚å¸¸
 				return "error";
 			}
 	}

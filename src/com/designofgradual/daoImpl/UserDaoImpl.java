@@ -12,9 +12,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 
 	/**
 	 * 
-	 * Todo£ºlogin
+	 * Todo:login
 	 * @author Evan
-	 * Date£º2014-3-10
+	 * Dateï¿½ï¿½2014-3-10
 	 * @param username
 	 * @param userpasswd
 	 * @return
@@ -37,9 +37,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 	
 	/**
 	 * 
-	 * Todo£ºregister
+	 * Todo:register
 	 * @author Evan
-	 * Date£º2014-3-10
+	 * Dateï¿½ï¿½2014-3-10
 	 * @param user
 	 * @return
 	 * @throws Exception
@@ -58,9 +58,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 	
 	/**
 	 * 
-	 * Todo£ºValidate user name 
+	 * Todoï¼šValidate user name 
 	 * @author Evan
-	 * Date£º2014-3-10
+	 * Dateï¿½ï¿½2014-3-10
 	 * @param username
 	 * @return
 	 * @throws Exception
@@ -81,9 +81,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 	}
 	/**
 	 * 
-	 * Todo£ºCheck e-mail
+	 * Todo:Check e-mail
 	 * @author Evan
-	 * Date£º2014-4-2
+	 * Dateï¿½ï¿½2014-4-2
 	 * @param mail
 	 * @return
 	 * @throws Exception
@@ -112,9 +112,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
 	
 	/**
 	 * 
-	 * Todo£ºUpdata User info
+	 * Todo:Updata User info
 	 * @author Evan
-	 * Date£º2014-3-10
+	 * Dateï¿½ï¿½2014-3-10
 	 * @param user
 	 * @param userId
 	 * @return

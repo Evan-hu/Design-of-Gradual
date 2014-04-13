@@ -27,23 +27,28 @@ public class Item implements java.io.Serializable {
 	private User user;
 	private String itemname;
 	private String itemchart;
+	private Set<Post> posts = new HashSet<Post>(0);
 	private Set<Replay> replaies = new HashSet<Replay>(0);
 
 	// Constructors
 
+	/** default constructor */
 	public Item() {
 	}
 
+	/** minimal constructor */
 	public Item(User user, String itemname) {
 		this.user = user;
 		this.itemname = itemname;
 	}
 
-	public Item(User user, String itemname, String itemchart,
+	/** full constructor */
+	public Item(User user, String itemname, String itemchart, Set<Post> posts,
 			Set<Replay> replaies) {
 		this.user = user;
 		this.itemname = itemname;
 		this.itemchart = itemchart;
+		this.posts = posts;
 		this.replaies = replaies;
 	}
 
@@ -85,6 +90,15 @@ public class Item implements java.io.Serializable {
 
 	public void setItemchart(String itemchart) {
 		this.itemchart = itemchart;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item")
+	public Set<Post> getPosts() {
+		return this.posts;
+	}
+
+	public void setPosts(Set<Post> posts) {
+		this.posts = posts;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "item")

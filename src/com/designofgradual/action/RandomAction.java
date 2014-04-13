@@ -15,17 +15,17 @@ public class RandomAction extends BaseAction{
 	
 	/**
 	 * 
-	 * Todo£ºÑéÖ¤Âë
+	 * Todoï¼šäº§ç”ŸéªŒè¯ç 
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¼š2014-4-8
 	 * @return
 	 * @throws Exception
 	 * @see com.opensymphony.xwork2.ActionSupport#execute()
 	 */
 	public String execute() throws Exception{      
 		RandomNum rdnu=RandomNum.Instance();      
-		this.setInputStream(rdnu.getImage());//È¡µÃ´øÓĞËæ»ú×Ö·û´®µÄÍ¼Æ¬      
-		//ActionContext.getContext().getSession().put("sessionCode", rdnu.getString());//È¡µÃËæ»ú×Ö·û´®·ÅÈëHttpSession      
+		this.setInputStream(rdnu.getImage());   
+		//ActionContext.getContext().getSession().put("sessionCode", rdnu.getString());//
 		this.getSession().put("sessionCode", rdnu.getString());
 		return SUCCESS;      
 	} 

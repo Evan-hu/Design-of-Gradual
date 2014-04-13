@@ -27,9 +27,9 @@ public class ValidateAction extends BaseAction{
 
 	/**
 	 * 
-	 * Todo£ºValidate username
+	 * Todoï¼šValidate username
 	 * @author Evan
-	 * Date£º2014-3-30
+	 * Dateï¿½ï¿½2014-3-30
 	 * @return
 	 * @throws Exception
 	 */
@@ -38,9 +38,9 @@ public class ValidateAction extends BaseAction{
 		try {
 			System.out.println("userName = " + userName);
 			if (userDao.validateName(userName)) {
-				setTip("ÓÃ»§Ãû£º"+ userName +"²»¿ÉÓÃ");
+				setTip("ç”¨æˆ·å"+ userName +"ä¸å¯ç”¨");
 			} else {
-				setTip("ÓÃ»§Ãû£º"+ userName +"¿ÉÓÃ");
+				setTip("ç”¨æˆ·å"+ userName +"å¯ç”¨");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -52,18 +52,18 @@ public class ValidateAction extends BaseAction{
 	}
 	/**
 	 * 
-	 * Todo£ºÓÊÏäÑéÖ¤
+	 * Todoï¼šéªŒè¯é‚®ç®±
 	 * @author Evan
-	 * Date£º2014-4-2
+	 * Dateï¿½ï¿½2014-4-2
 	 * @return
 	 * @throws Exception
 	 */
 	public String valMail() throws Exception {
 		try {
 			if (userDao.validatemail(mail)) {
-				setTip("ÓÊÏä²»¿ÉÓÃ");
+				setTip("é‚®ç®±ä¸å¯ç”¨");
 			} else {
-				setTip("ÓÊÏä¿ÉÓÃ");
+				setTip("é‚®ç®±å¯ç”¨");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -76,18 +76,18 @@ public class ValidateAction extends BaseAction{
 	}
 	/**
 	 * 
-	 * Todo£º¶ÔÑéÖ¤ÂëµÄÑéÖ¤
+	 * Todoï¼šéªŒè¯ç çš„éªŒè¯
 	 * @author Evan
-	 * Date£º2014-3-30
+	 * Dateï¿½ï¿½2014-3-30
 	 * @return
 	 * @throws Exception
 	 */
 	public String validateCode() throws Exception{
 		String sessionCode = (String) ActionContext.getContext().getSession().get("sessionCode");
-		if(sessionCode.equals(this.getCode())){
-			this.setTip("ÑéÖ¤ÂëÕıÈ·");
+		if (sessionCode.equals(this.getCode())) {
+			this.setTip("éªŒè¯ç æ­£ç¡®");
 		}else {
-			this.setTip("ÑéÖ¤Âë´íÎó");
+			this.setTip("éªŒè¯ç é”™è¯¯");
 		}
 		JSONObject json = new JSONObject();
 		json.put("tip", tip);

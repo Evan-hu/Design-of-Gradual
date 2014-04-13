@@ -10,7 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
+/**
+ * Replay entity. @author MyEclipse Persistence Tools
+ */
 @Entity
 @Table(name = "replay", catalog = "dofg_1")
 public class Replay implements java.io.Serializable {

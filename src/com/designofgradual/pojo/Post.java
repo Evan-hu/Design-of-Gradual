@@ -17,7 +17,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
+/**
+ * Post entity. @author MyEclipse Persistence Tools
+ */
 @Entity
 @Table(name = "post", catalog = "dofg_1")
 public class Post implements java.io.Serializable {
@@ -26,7 +28,7 @@ public class Post implements java.io.Serializable {
 
 	private Integer postid;
 	private User user;
-	private String pitem;
+	private Item item;
 	private String ptitle;
 	private String pcontent;
 	private Date ptime;
@@ -42,10 +44,10 @@ public class Post implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public Post(User user, String pitem, String ptitle, String pcontent,
+	public Post(User user, Item item, String ptitle, String pcontent,
 			Date ptime, String pstate) {
 		this.user = user;
-		this.pitem = pitem;
+		this.item = item;
 		this.ptitle = ptitle;
 		this.pcontent = pcontent;
 		this.ptime = ptime;
@@ -53,11 +55,11 @@ public class Post implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Post(User user, String pitem, String ptitle, String pcontent,
+	public Post(User user, Item item, String ptitle, String pcontent,
 			Date ptime, String pstate, Integer pclicknum, Integer preplay,
 			Set<Replay> replaies) {
 		this.user = user;
-		this.pitem = pitem;
+		this.item = item;
 		this.ptitle = ptitle;
 		this.pcontent = pcontent;
 		this.ptime = ptime;
@@ -89,13 +91,14 @@ public class Post implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@Column(name = "pitem", nullable = false, length = 11)
-	public String getPitem() {
-		return this.pitem;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "pitem", nullable = false)
+	public Item getItem() {
+		return this.item;
 	}
 
-	public void setPitem(String pitem) {
-		this.pitem = pitem;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	@Column(name = "ptitle", nullable = false)

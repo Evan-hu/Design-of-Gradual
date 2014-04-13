@@ -12,45 +12,45 @@ import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
 
 public class RandomNum {
-	private ByteArrayInputStream image;//Í¼Ïñ      
-	private String str;//ÑéÖ¤Âë   
+	private ByteArrayInputStream image;//å›¾åƒ
+	private String str;//éªŒè¯ç 
 	
 	private RandomNum(){      
-	    init();//³õÊ¼»¯ÊôĞÔ      
+	    init();//åˆå§‹åŒ–å±æ€§
 	}      
 	/*    
-	* È¡µÃRandomNumÊµÀı    
+	* å–å¾—RandomNumå®ä¾‹
 	*/      
 	public static RandomNum Instance(){      
 		return new RandomNum();      
 	}      
 	/*    
-	* È¡µÃÑéÖ¤ÂëÍ¼Æ¬    
+	*å–å¾—éªŒè¯ç å›¾ç‰‡
 	*/      
 	public ByteArrayInputStream getImage(){      
 		return this.image;      
 	}      
 	/*    
-	* È¡µÃÍ¼Æ¬µÄÑéÖ¤Âë    
+	* å–å¾—å›¾ç‰‡éªŒè¯ç  
 	*/      
 	public String getString(){      
 		return this.str;      
 	}      
 	    
 	private void init() {      
-	// ÔÚÄÚ´æÖĞ´´½¨Í¼Ïó      
+	// åœ¨å†…å­˜ä¸­åˆ›å»ºå›¾ç‰‡  
 		int width=85, height=20;      
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);      
-	// »ñÈ¡Í¼ĞÎÉÏÏÂÎÄ      
+	// è·å–å›¾ç‰‡ä¸Šä¸‹æ–‡
 		Graphics g = image.getGraphics();      
-	// Éú³ÉËæ»úÀà      
+	// ç”Ÿæˆéšæœºç±»
 		Random random = new Random();      
-	// Éè¶¨±³¾°É«      
+	// è®¾å®šèƒŒæ™¯è‰²  
 		g.setColor(getRandColor(200,250));      
 		g.fillRect(0, 0, width, height);      
-	// Éè¶¨×ÖÌå      
+	// è®¾å®šå­—ä½“
 		g.setFont(new Font("Times New Roman",Font.PLAIN,18));      
-	// Ëæ»ú²úÉú155Ìõ¸ÉÈÅÏß£¬Ê¹Í¼ÏóÖĞµÄÈÏÖ¤Âë²»Ò×±»ÆäËü³ÌĞòÌ½²âµ½      
+	// éšæœºäº§ç”Ÿ155æ¡å¹²æ‰°çº¿ï¼Œæ˜¯å›¾ç‰‡ä¸­éªŒè¯ç ä¸æ˜“è¢«å…¶ä»–ç¨‹åºæ¢æµ‹åˆ°      
 		g.setColor(getRandColor(160,200));      
 		for (int i=0;i<155;i++){      
 			int x = random.nextInt(width);      
@@ -59,19 +59,19 @@ public class RandomNum {
 			int yl = random.nextInt(12);      
 			g.drawLine(x,y,x+xl,y+yl);      
 		}      
-	// È¡Ëæ»ú²úÉúµÄÈÏÖ¤Âë(6Î»Êı×Ö)      
+	// éšæœºäº§ç”Ÿçš„è®¤è¯å‘¢ï¼ˆä½æ•°å¯ä»¥è°ƒæ•´ï¼‰
 		String sRand="";      
 		for (int i=0;i<4;i++){      
 			String rand=String.valueOf(random.nextInt(10));      
 			sRand+=rand;      
-	// ½«ÈÏÖ¤ÂëÏÔÊ¾µ½Í¼ÏóÖĞ      
+	// å°†è®¤è¯ç æ˜¾ç¤ºåˆ°å›¾è±¡ä¸­      
 			g.setColor(new Color(20+random.nextInt(110),20+random.nextInt(110),20+random.nextInt(110)));      
-	// µ÷ÓÃº¯Êı³öÀ´µÄÑÕÉ«ÏàÍ¬£¬¿ÉÄÜÊÇÒòÎªÖÖ×ÓÌ«½Ó½ü£¬ËùÒÔÖ»ÄÜÖ±½ÓÉú³É      
+	//è°ƒç”¨å‡½æ•°å‡ºæ¥çš„é¢œè‰²ç›¸åŒï¼Œå¯èƒ½æ˜¯å› ä¸ºç§å­å¤ªæ¥è¿‘ï¼Œæ‰€ä»¥åªèƒ½ç›´æ¥ç”Ÿæˆ    
 			g.drawString(rand,13*i+6,16);      
 		}     
-	//¸³ÖµÑéÖ¤Âë     
+	//èµ‹å€¼éªŒè¯ç      
 	this.str=sRand;        
-	//Í¼ÏóÉúĞ§      
+	//å›¾è±¡ç”Ÿæ•ˆ      
 	g.dispose();      
 	ByteArrayInputStream input=null;      
 	ByteArrayOutputStream output = new ByteArrayOutputStream();      
@@ -82,13 +82,13 @@ public class RandomNum {
 		imageOut.close();      
 		input = new ByteArrayInputStream(output.toByteArray());      
 	}catch(Exception e){      
-		System.out.println("ÑéÖ¤ÂëÍ¼Æ¬²úÉú³öÏÖ´íÎó£º"+e.toString());      
+		System.out.println("éªŒè¯ç å›¾ç‰‡äº§ç”Ÿå‡ºç°é”™è¯¯ï¼š"+e.toString());      
 	}      
 	    
-	this.image=input;/* ¸³ÖµÍ¼Ïñ */      
+	this.image=input;/* èµ‹å€¼å›¾åƒ */      
 	}      
 	/*    
-	* ¸ø¶¨·¶Î§»ñµÃËæ»úÑÕÉ«    
+	* ç»™å®šèŒƒå›´è·å¾—éšæœºé¢œè‰²   
 	*/      
 	private Color getRandColor(int fc,int bc){      
 		Random random = new Random();      

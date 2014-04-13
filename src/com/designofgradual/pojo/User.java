@@ -12,8 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
+/**
+ * User entity. @author MyEclipse Persistence Tools
+ */
 @Entity
 @Table(name = "user", catalog = "dofg_1")
 public class User implements java.io.Serializable {
@@ -32,8 +33,9 @@ public class User implements java.io.Serializable {
 	private String tel;
 	private String img;
 	private String address;
-	private Set<Post> posts = new HashSet<Post>(0);
+	private Set<Item> items = new HashSet<Item>(0);
 	private Set<Replay> replaies = new HashSet<Replay>(0);
+	private Set<Post> posts = new HashSet<Post>(0);
 
 	// Constructors
 
@@ -52,7 +54,7 @@ public class User implements java.io.Serializable {
 	public User(String username, String userpasswd, String useremail,
 			String userright, String sysmesg, String name, String sex,
 			String brithday, String tel, String img, String address,
-			Set<Post> posts, Set<Replay> replaies) {
+			Set<Item> items, Set<Replay> replaies, Set<Post> posts) {
 		this.username = username;
 		this.userpasswd = userpasswd;
 		this.useremail = useremail;
@@ -64,12 +66,12 @@ public class User implements java.io.Serializable {
 		this.tel = tel;
 		this.img = img;
 		this.address = address;
-		this.posts = posts;
+		this.items = items;
 		this.replaies = replaies;
+		this.posts = posts;
 	}
 
 	// Property accessors
-	@GenericGenerator(name = "generator", strategy = "increment")
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "userid", unique = true, nullable = false)
@@ -181,12 +183,12 @@ public class User implements java.io.Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
-	public Set<Post> getPosts() {
-		return this.posts;
+	public Set<Item> getItems() {
+		return this.items;
 	}
 
-	public void setPosts(Set<Post> posts) {
-		this.posts = posts;
+	public void setItems(Set<Item> items) {
+		this.items = items;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
@@ -196,6 +198,15 @@ public class User implements java.io.Serializable {
 
 	public void setReplaies(Set<Replay> replaies) {
 		this.replaies = replaies;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	public Set<Post> getPosts() {
+		return this.posts;
+	}
+
+	public void setPosts(Set<Post> posts) {
+		this.posts = posts;
 	}
 
 }

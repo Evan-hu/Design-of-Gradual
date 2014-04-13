@@ -7,62 +7,63 @@ import com.designofgradual.pojo.Item;
 public interface ItemDao {
 	/**
 	 * 
-	 * Todo£º´´½¨°å¿é
+	 * Todoï¼šåˆ›å»ºitem
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¿½ï¿½2014-4-7
 	 * @param item
 	 * @return
 	 */
 	public String createItem(Item item,String owner);
 	/**
 	 * 
-	 * TODO£ºÉ¾³ı°å¿é
+	 * TODOï¼šåˆ é™¤
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¿½ï¿½2014-4-7
 	 * @param item
 	 * @return
 	 */
-	public boolean deleteItem(String itemname);/**
+	public boolean deleteItem(String itemname);
+	/**
 	 * 
-	 * Todo£º¸üĞÂ°å¿éĞÅÏ¢
+	 * Todoï¼šæ›´æ–°
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¿½ï¿½2014-4-7
 	 * @param item
 	 * @return
 	 */
 	public boolean updataItem(String itemname);
 	/**
 	 * 
-	 * Todo£º¸üĞÂ°å¿é£¨more£©
+	 * Todoï¼šæ›´æ–°more
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¿½ï¿½2014-4-7
 	 * @param item
 	 * @return
 	 */
 	public boolean updataItemMore(Item item);
 	/**
 	 * 
-	 * Todo£º¼ìË÷°å¿é
+	 * Todoï¼šæ£€ç´¢item
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¿½ï¿½2014-4-7
 	 * @param item
 	 * @return
 	 */
 	public Item retrieveItemMore(String itemname);
 	/**
 	 * 
-	 * Todo£º¼ìË÷ËùÓĞ°å¿é
+	 * Todoï¼šæ£€ç´¢item
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¿½ï¿½2014-4-7
 	 * @param item
 	 * @return
 	 */
 	public List<String> retrieveItem();
 	/**
 	 * 
-	 * Todo£º¼ìË÷
+	 * Todoï¼šæ£€ç´¢ï¼ˆä½¿ç”¨åå­—ï¼‰
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¿½ï¿½2014-4-7
 	 * @param item
 	 * @return
 	 */

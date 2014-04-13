@@ -24,7 +24,7 @@ public class BaseAction extends ActionSupport implements RequestAware,SessionAwa
 	
 	
 	
-	//ÃÜÂë¼ÓÃÜ
+	//MD5 åŠ å¯†éƒ¨åˆ†
 	public String EncoderPwdByMd5(String str) throws NoSuchAlgorithmException, 
 	UnsupportedEncodingException { 
 		MessageDigest md5 = MessageDigest.getInstance("MD5"); 

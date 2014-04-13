@@ -27,9 +27,9 @@ public interface UserDao {
 	public boolean validateName(String username) throws Exception;
 	/**
 	 * 
-	 * Todo£ºTODO
+	 * Todoï¼šTODO
 	 * @author Evan
-	 * Date£º2014-4-2
+	 * Dateï¿½ï¿½2014-4-2
 	 * @param mail
 	 * @return
 	 * @throws Exception

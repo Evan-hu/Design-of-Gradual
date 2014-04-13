@@ -13,42 +13,40 @@ import com.designofgradual.pojo.Item;
 import com.designofgradual.util.BaseAction;
 
 @SuppressWarnings("serial")
-public class ItemAjaxAction extends BaseAction{
-	
+public class ItemAjaxAction extends BaseAction {
+
 	private ItemDao itemDao;
-	private JSONObject json; 
+	private JSONObject json;
 	private JSONArray jarray;
-	
-	
+
 	@SuppressWarnings("rawtypes")
 	private List list;
 	private Item item;
 	private String itemname;
 	private String owner;
 	private String result;
-	
-	
 
 	public String execute() throws Exception {
-	
+
 		return super.execute();
 	}
-	
+
 	/**
 	 * 
-	 * Todo:´´½¨Item
+	 * Todoï¼šåˆ›å»º Item
 	 * @author Evan
-	 * Date£º2014-4-7
+	 * Dateï¼š2014-4-8
 	 * @return
 	 */
 	public String createItem() {
-		System.out.println("itemname = "+ getItemname()+ "owner = "+ getOwner());
-		
-		if(this.getItemname() != null) {
-			item = new Item(this.getItemname());
+		System.out.println("itemname = " + getItemname() + " --|-- "
+				+ "owner = " + getOwner());
+		if (this.getItemname() != null) {
+			item = new Item();
+			item.setItemname(itemname);
 			try {
-				//this.itemDao.createItem(item,owner);
-				//list = this.itemDao.retrieveItem();
+				this.itemDao.createItem(item,owner);
+				list = this.itemDao.retrieveItem();
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -62,64 +60,86 @@ public class ItemAjaxAction extends BaseAction{
 		return SUCCESS;
 	}
 	
-	//ÅäÖÃJSon Êý¾Ý¸ñÊ½
-	public JSONArray configJson(List list){
+	/**
+	 * 
+	 * Todoï¼šJson Array
+	 * @author Evan
+	 * Dateï¼š2014-4-8
+	 * @param list
+	 * @return
+	 */
+	public JSONArray configJson(List list) {
 		JsonConfig jsonConfig = new JsonConfig();
 		jsonConfig.setIgnoreDefaultExcludes(false);
-		jsonConfig.setExcludes(new String[]{""});
-		JSONArray jsonArray = JSONArray.fromObject(list,jsonConfig);
+		jsonConfig.setExcludes(new String[] { "" });
+		JSONArray jsonArray = JSONArray.fromObject(list, jsonConfig);
 		return jsonArray;
 	}
-	
-//	getter and setter method 
+
+	// getter and setter method
 	public ItemDao getItemDao() {
 		return itemDao;
 	}
+
 	@Resource
 	public void setItemDao(ItemDao itemDao) {
 		this.itemDao = itemDao;
 	}
+
 	public String getResult() {
 		return result;
 	}
+
 	public void setResult(String result) {
 		this.result = result;
 	}
+
 	@SuppressWarnings("rawtypes")
 	public List getList() {
 		return list;
 	}
+
 	@SuppressWarnings("rawtypes")
 	public void setList(List list) {
 		this.list = list;
 	}
+
 	public JSONObject getJson() {
 		return json;
 	}
+
 	public void setJson(JSONObject json) {
 		this.json = json;
 	}
+
 	public JSONArray getJarray() {
 		return jarray;
 	}
+
 	public void setJarray(JSONArray jarray) {
 		this.jarray = jarray;
 	}
+
 	public Item getItem() {
 		return item;
 	}
+
 	public void setItem(Item item) {
 		this.item = item;
 	}
+
 	public String getItemname() {
 		return itemname;
 	}
+
 	public void setItemname(String itemname) {
 		this.itemname = itemname;
 	}
+
 	public String getOwner() {
 		return owner;
 	}
+
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}

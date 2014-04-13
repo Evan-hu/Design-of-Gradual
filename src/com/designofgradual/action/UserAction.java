@@ -24,22 +24,22 @@ public class UserAction extends BaseAction{
 
 	/**
 	 * 
-	 * Todo£ºRegister
+	 * Todoï¼šRegister
 	 * @author Evan
-	 * Date£º2014-3-9
+	 * Dateï¿½ï¿½2014-3-9
 	 * @return
 	 * @throws Exception
 	 */
 	public String execute() throws Exception
 	{
-		userpasswd = EncoderPwdByMd5(userpasswd);//MD5 ¼ÓÃÜ
+		userpasswd = EncoderPwdByMd5(userpasswd);//MD5
 		System.out.println("userpasswd = " + userpasswd);
 		user = new User();
 		user.setUsername(username);
 		user.setUserpasswd(userpasswd);
 		user.setUseremail(email);
-		user.setUserright("3");//Ä¬ÈÏÉèÖÃÎªÆÕÍ¨ÓÃ»§
-//		user.setImg("");//Ä¬ÈÏÉèÖÃÓÃ»§Í·Ïñ
+		user.setUserright("3");//ç³»ç»Ÿé»˜è®¤è®¾ç½®ä¸ºæ™®é€šç”¨æˆ·
+//		user.setImg("");//ç³»ç»Ÿè®¾ç½®é»˜è®¤å¤´åƒ
 		
 		if(userDao.addUser(user) <= 0){
 			return "register_index";
@@ -51,9 +51,9 @@ public class UserAction extends BaseAction{
 	
 	/**
 	 * 
-	 * Todo£ºTODO
+	 * Todoï¿½ï¼šTODO
 	 * @author Evan
-	 * Date£º2014-3-9
+	 * Dateï¿½ï¿½2014-3-9
 	 * @return
 	 * @throws Exception
 	 */
